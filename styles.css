@@ -1,0 +1,129 @@
+/* GENERAL */
+
+.grid{
+    display: grid;
+    grid-template-columns: 30% 50px 30%;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.encuesta-container{
+    border: 1px solid black;
+    padding: 20px;
+    align-self: self-start;
+}
+
+/* CREAR PREGUNTA */
+
+.input-container{
+    position: relative;
+}
+
+.input-titulo{
+    position: absolute;
+    top: -25px;
+    left: 10px;
+    padding: 0 5px;
+    background-color: white;
+}
+
+.letras-opcion{
+    position: absolute;
+    top: -5px;
+    right: 0;
+    font-size: 0.8em;
+}
+
+.encuesta-input{
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.encuesta-input:focus{
+    outline: none;
+    border: 2px solid dodgerblue;
+}
+
+
+/* CEAR OPCIONES */
+
+.encuesta-opciones{
+    max-width: 100%;
+}
+
+#encuesta-add-opcion-container{
+    justify-content: center;
+    align-items: center;
+}
+
+#encuesta-add-opcion{
+    border: 2px solid dodgerblue;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcyan;
+}
+
+#encuesta-add-opcion:hover{
+    background-color: dodgerblue;
+    color: white;
+}
+
+
+
+/* VOTAR PREGUNTA */
+#votar-pregunta{
+    text-align: center;
+    padding: 10px;
+    border: 2px solid dodgerblue;
+    border-radius: 50px;
+}
+
+/* VOTAR OPCIONES */
+.votar-opciones{
+    width: 100%;
+}
+.votar-opcion{
+    text-align: center;
+    padding: 15px;
+    border: 2px solid dodgerblue;
+    border-radius: 5px;
+    margin: 0;
+}
+
+.votar-opcion:hover{
+    background-color: aliceblue;
+}
+
+.votada{
+    background-color: lightcyan;
+}
+
+/* OTROS */
+
+.pointer{
+    cursor: pointer;
+}
+
+
+.input-accion{
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid silver;
+    background-color: dodgerblue;
+    color: white;
+    width: 100%;
+    margin-bottom: 15px;
+}

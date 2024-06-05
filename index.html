@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="funcionalidad.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <!-- <header>
+        <img src="" id="">
+    </header> -->
+
+    <main class="grid">
+        <!-- SECCIÓN DE AÑADIR PREGUNTA Y OPCIONES -->
+        <section class="encuesta-container flex-column">
+
+            <button type="button" id="input-enviar" class="input-accion">Enviar</button>
+
+            <div class="input-container">
+                <p class="input-titulo">Pregunta :</p>
+                <input type="text" id="input-pregunta" class="encuesta-input" placeholder="Escribe tu pregunta">
+            </div>
+
+                <table id="tabla-opciones">
+
+                    <tr>
+                        <td>
+                            <div class="input-container">
+                                <p id="opcion-1" style="display: none;"></p>
+                                <p class="input-titulo">Opción 1</p>
+                                <input type="text" class="encuesta-input input-opcion" id="input-opcion1" size="25" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-1">
+                                <p id="letras-opcion-1" class="letras-opcion">0 / 25</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="input-container">
+                                <p id="opcion-2" style="display: none;"></p>
+                                <p class="input-titulo">Opción 2</p>
+                                <input type="text" class="encuesta-input input-opcion" id="input-opcion2" size="25" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-2">
+                                <p id="letras-opcion-2" class="letras-opcion">0 / 25</p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </table>
+
+                <span id="encuesta-add-opcion-container" class="flex-column">
+                    <p id="encuesta-add-opcion" class="flex-column pointer material-icons">add</p>
+                </span>
+        </section>
+
+
+        <section>
+            <p>==></p>
+        </section>
+
+        <!-- SECCIÓN PARA CONTESTAR LA ENCUESTA -->
+        <section class="encuesta-container flex-column">
+            <p id="votar-pregunta"></p>
+
+            <table class="votar-opciones" id="votar-opciones"></table>
+
+            <button type="button" class="input-accion">Votar</button>
+        </section>
+    </main>
+</body>
+</html>
