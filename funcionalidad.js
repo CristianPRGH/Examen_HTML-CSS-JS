@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let addOption = document.getElementById("encuesta-add-opcion");
+    let addOption = document.getElementById("input-add-option");
     addOption.addEventListener("click", () => {AddNewOption();})
 
     let enviarEncuesta = document.getElementById("input-enviar");
@@ -12,13 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function AddNewOption()
 {
     let tablaOpciones = document.getElementById("tabla-opciones");
-    let numOpciones = tablaOpciones.rows.length;
-    let siguienteOpcion = numOpciones + 1;
+    let numOpciones = tablaOpciones.rows.length - 1;    // Obtiene el el numero de filas de la tabla y le quita 1 para excluir la "pregunta"
+    let siguienteOpcion = numOpciones + 1;              // Se suma 1 al numero de opciones para incluir la siguiente opcion
 
     if (numOpciones < 4)
     {
-
-        let newRow = tablaOpciones.insertRow(numOpciones);
+        let newRow = tablaOpciones.insertRow(siguienteOpcion);
 
         let nuevaOpcion = 
         `
@@ -39,7 +38,7 @@ function AddNewOption()
 function CuentaLetras(input)
 {
     let contadorLetras = document.getElementById(input.dataset.letras);
-    contadorLetras.textContent = `${input.value.length} / 25`;
+    contadorLetras.textContent = `${input.value.length} / ${input.maxLength}`;
 }
 
 function GeneraEncuestaContestar()
@@ -54,6 +53,11 @@ function GeneraEncuestaContestar()
     // Obtiene la tabla donde se mostrarán las opciones creadas
     let tablaOpcionesVotar = document.getElementById("votar-opciones");
     tablaOpcionesVotar.innerHTML = "";
+
+    let opcionesOK = opciones.every(opc => opc.value != "");
+
+    console.log(opcionesOK);
+
     let i = 0;
     opciones.forEach(opcion => {
         let row = tablaOpcionesVotar.insertRow(i);
@@ -75,4 +79,9 @@ function VotarOpcion(opcion)
     
     opcion.classList.remove("no-votada");
     opcion.classList.add("votada");
+}
+
+function VotarEncuesta()
+{
+
 }

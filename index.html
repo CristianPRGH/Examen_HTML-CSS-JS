@@ -20,21 +20,22 @@
         <!-- SECCIÓN DE AÑADIR PREGUNTA Y OPCIONES -->
         <section class="encuesta-container flex-column">
 
-            <button type="button" id="input-enviar" class="input-accion">Enviar</button>
-
-            <div class="input-container">
-                <p class="input-titulo">Pregunta :</p>
-                <input type="text" id="input-pregunta" class="encuesta-input" placeholder="Escribe tu pregunta">
-            </div>
-
                 <table id="tabla-opciones">
+                    <tr>
+                        <td>
+                            <div class="input-container">
+                                <p class="input-titulo">Pregunta :</p>
+                                <input type="text" id="input-pregunta" class="encuesta-input" placeholder="Escribe tu pregunta">
+                            </div>
+                        </td>
+                    </tr>
 
                     <tr>
                         <td>
                             <div class="input-container">
                                 <p id="opcion-1" style="display: none;"></p>
                                 <p class="input-titulo">Opción 1</p>
-                                <input type="text" class="encuesta-input input-opcion" id="input-opcion1" size="25" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-1">
+                                <input type="text" class="encuesta-input input-opcion" id="input-opcion1" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-1">
                                 <p id="letras-opcion-1" class="letras-opcion">0 / 25</p>
                             </div>
                         </td>
@@ -45,7 +46,7 @@
                             <div class="input-container">
                                 <p id="opcion-2" style="display: none;"></p>
                                 <p class="input-titulo">Opción 2</p>
-                                <input type="text" class="encuesta-input input-opcion" id="input-opcion2" size="25" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-2">
+                                <input type="text" class="encuesta-input input-opcion" id="input-opcion2" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-2">
                                 <p id="letras-opcion-2" class="letras-opcion">0 / 25</p>
                             </div>
                         </td>
@@ -53,14 +54,10 @@
                     
                 </table>
 
-                <span id="encuesta-add-opcion-container" class="flex-column">
-                    <p id="encuesta-add-opcion" class="flex-column pointer material-icons">add</p>
+                <span class="input-actions flex-row">
+                    <p id="input-add-option" class="input-action pointer material-icons">add</p>
+                    <p id="input-enviar" class="input-action pointer material-icons">send</p>
                 </span>
-        </section>
-
-
-        <section>
-            <p>==></p>
         </section>
 
         <!-- SECCIÓN PARA CONTESTAR LA ENCUESTA -->
@@ -69,7 +66,13 @@
 
             <table class="votar-opciones" id="votar-opciones"></table>
 
-            <button type="button" class="input-accion">Votar</button>
+            <span class="input-actions flex-row">
+                <p id="input-votar" class="input-action pointer material-icons" onclick="VotarEncuesta()">how_to_vote</p>
+            </span>
+        </section>
+
+        <section class="encuesta-container flex-column">
+
         </section>
     </main>
 </body>

@@ -1,8 +1,12 @@
 /* GENERAL */
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .grid{
     display: grid;
-    grid-template-columns: 30% 50px 30%;
+    grid-template-columns: 30% 30% 30%;
+    column-gap: 20px;
 }
 
 .flex-row{
@@ -28,23 +32,24 @@
 
 .input-titulo{
     position: absolute;
-    top: -25px;
+    top: -30%;
     left: 10px;
     padding: 0 5px;
     background-color: white;
+    font-size: 0.8em;
 }
 
 .letras-opcion{
     position: absolute;
-    top: -5px;
-    right: 0;
-    font-size: 0.8em;
+    top: -10%;
+    right: 5%;
+    font-size: 0.7em;
 }
 
 .encuesta-input{
     width: 100%;
     margin-bottom: 15px;
-    padding: 15px;
+    padding: 15px 0;
     border-radius: 5px;
     border: 1px solid black;
 }
@@ -59,26 +64,6 @@
 
 .encuesta-opciones{
     max-width: 100%;
-}
-
-#encuesta-add-opcion-container{
-    justify-content: center;
-    align-items: center;
-}
-
-#encuesta-add-opcion{
-    border: 2px solid dodgerblue;
-    width: 32px;
-    height: 32px;
-    border-radius: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: lightcyan;
-}
-
-#encuesta-add-opcion:hover{
-    background-color: dodgerblue;
-    color: white;
 }
 
 
@@ -117,13 +102,26 @@
     cursor: pointer;
 }
 
+.input-actions{
+    justify-content: center;
+}
 
-.input-accion{
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid silver;
+.input-action{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid dodgerblue;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: lightcyan;
+    margin: 0 10px;
+}
+
+.input-action:hover{
     background-color: dodgerblue;
     color: white;
-    width: 100%;
-    margin-bottom: 15px;
 }
