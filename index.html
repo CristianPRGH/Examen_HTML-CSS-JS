@@ -19,12 +19,12 @@
     <main class="grid">
         <!-- SECCIÓN DE AÑADIR PREGUNTA Y OPCIONES -->
         <section class="encuesta-container flex-column">
-
+                <p id="id_encuesta" style="display: none;"></p>
                 <table id="tabla-opciones">
                     <tr>
                         <td>
                             <div class="input-container">
-                                <p class="input-titulo">Pregunta :</p>
+                                <p class="input-titulo">Pregunta</p>
                                 <input type="text" id="input-pregunta" class="encuesta-input" placeholder="Escribe tu pregunta">
                             </div>
                         </td>
@@ -58,6 +58,8 @@
                     <p id="input-add-option" class="input-action pointer material-icons">add</p>
                     <p id="input-enviar" class="input-action pointer material-icons">send</p>
                 </span>
+
+                <p id="crea-encuesta-error" style="text-align: center;"></p>
         </section>
 
         <!-- SECCIÓN PARA CONTESTAR LA ENCUESTA -->
@@ -69,10 +71,14 @@
             <span class="input-actions flex-row">
                 <p id="input-votar" class="input-action pointer material-icons" onclick="VotarEncuesta()">how_to_vote</p>
             </span>
+
+            <p id="vota-encuesta-error"></p>
         </section>
 
         <section class="encuesta-container flex-column">
+            <p id="recuento-pregunta"></p>
 
+            <table class="recuento-opciones" id="recuento-opciones"></table>
         </section>
     </main>
 </body>

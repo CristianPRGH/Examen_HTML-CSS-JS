@@ -41,31 +41,29 @@ function CuentaLetras(input)
     contadorLetras.textContent = `${input.value.length} / ${input.maxLength}`;
 }
 
-function GeneraEncuestaContestar()
+async function GeneraEncuestaContestar()
 {
-    // Obtiene la pregunta creada y la muestra en el módulo de VOTAR
-    let pregunta = document.getElementById("input-pregunta").value;
-    document.getElementById("votar-pregunta").innerHTML = pregunta;
+    await GuardaEncuesta();
+    let data = await ObtieneEncuesta();
+    console.log(data);
 
-    // Obtiene las opciones del modulo de crear encuesta
-    let opciones = Array.from(document.getElementsByClassName("input-opcion"));
-    
-    // Obtiene la tabla donde se mostrarán las opciones creadas
+    let datos = data.datos[0];
+
+    document.getElementById("votar-pregunta").innerHTML = datos.pregunta;
+
     let tablaOpcionesVotar = document.getElementById("votar-opciones");
     tablaOpcionesVotar.innerHTML = "";
-
-    let opcionesOK = opciones.every(opc => opc.value != "");
-
-    console.log(opcionesOK);
-
     let i = 0;
-    opciones.forEach(opcion => {
-        let row = tablaOpcionesVotar.insertRow(i);
-        let cell = row.insertCell(0);
-        let valorOpcion = `<p class="votar-opcion pointer no-votada" onclick='VotarOpcion(this)'>${opcion.value}</p>`;
-        cell.innerHTML = valorOpcion;
-        i++;
-    })
+    for (const key in datos) {
+        if (key.includes("opcion") && datos[key] != null)
+        {
+            let row = tablaOpcionesVotar.insertRow(i);
+            let cell = row.insertCell(0);
+            let valorOpcion = `<p id="${key}" class="votar-opcion pointer no-votada" onclick='VotarOpcion(this)'>${datos[key]}</p>`;
+            cell.innerHTML = valorOpcion;
+            i++;
+        }
+    }
 }
 
 function VotarOpcion(opcion)
@@ -81,7 +79,89 @@ function VotarOpcion(opcion)
     opcion.classList.add("votada");
 }
 
-function VotarEncuesta()
+async function VotarEncuesta()
 {
+    let opcionSeleccionada = Array.from(document.getElementsByClassName("votada"));
+    if (opcionSeleccionada.length > 0)
+    {
+        let formData = new FormData();
 
+
+        let id = document.getElementById("id_encuesta").innerHTML;
+        formData.append("idencuesta", id);
+        let opciones = Array.from(document.getElementsByClassName("votar-opcion"));
+        opciones.forEach(opcion => {
+            if (opcion.classList.contains("votada"))
+            {
+                formData.append("opciones[]", `${opcion.id}_1`);
+            }
+            else
+            {
+                formData.append("opciones[]", `${opcion.id}_0`);
+            }
+        });
+
+        let res = await fetch("vota_encuesta.php", {
+            method:"post",
+            body: formData
+        });
+        if (res.ok)
+        {
+            let respuesta = await res.json();
+            document.getElementById("vota-encuesta-error").innerHTML = respuesta.descripcion;
+        }
+    }
+}
+
+
+async function GuardaEncuesta()
+{
+    let faltandatos = false;
+    let pregunta = document.getElementById("input-pregunta");
+    let opciones = Array.from(document.getElementsByClassName("input-opcion"));
+
+    let datosEncuesta = new FormData();
+    faltandatos = (pregunta.value == "") ? true : false;
+    datosEncuesta.append("pregunta", pregunta.value);
+    
+    opciones.forEach(opcion => {
+        if (opcion.value == "")
+        {
+            faltandatos = true;
+        }
+        datosEncuesta.append("opciones[]", opcion.value);
+    });
+
+    if (!faltandatos)
+    {
+        try {
+            let res = await fetch("crea_encuesta.php", {
+                method:"post",
+                body: datosEncuesta
+            });
+            if (res.ok)
+            {
+                let respuesta = await res.json();
+                document.getElementById("crea-encuesta-error").innerHTML = respuesta.descripcion;
+                document.getElementById("id_encuesta").innerHTML = respuesta.idencuesta;
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    else
+    {
+        document.getElementById("crea-encuesta-error").innerHTML = "Faltan campos por rellenar";
+    }
+}
+
+async function ObtieneEncuesta()
+{
+    let id = document.getElementById("id_encuesta").innerHTML;
+    let res = await fetch(`get_encuesta.php?idencuesta=${id}`);
+    if (res.ok)
+    {
+        return data = await res.json();
+    }
 }
