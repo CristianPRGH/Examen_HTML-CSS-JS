@@ -50,6 +50,13 @@ function CuentaLetras(input)
 // GENERA LA ENCUESTA
 async function GeneraEncuestaVotar()
 {
+    let noUsuarios = document.getElementById("num-usuarios").value;
+    if (noUsuarios == null || noUsuarios <= 0)
+    {
+        document.getElementById("crea-encuesta-error").innerHTML = "Debe seleccionar al menos 1 usuario";
+        return;
+    }
+
     await GuardaEncuesta();
     let data = await ObtieneEncuesta();
     let datos = data.datos[0];
@@ -126,6 +133,7 @@ async function VotarEncuesta()
 {
     let id = document.getElementById("id_encuesta").innerHTML;
     let opcionesSeleccionadas = Array.from(document.getElementsByClassName("votada"));
+    if (opcionesSeleccionadas.length == 0 || opcionesSeleccionadas == null) return;
     let formData = new FormData();
     formData.append("idencuesta", id);
 
@@ -197,7 +205,7 @@ async function MuestraResultados(datos)
     {
         let respuesta = await res.json();
         let datos = respuesta.datos[0];
-        console.log(datos);
+        // console.log(datos);
 
         document.getElementById("encuesta3-pregunta").innerHTML = datos.pregunta;
 
@@ -216,10 +224,10 @@ async function MuestraResultados(datos)
                     if (key === `votos${matches[0]}` && datos[key] != null)
                     {
                         let numVotos = datos[key];
-                        pcjVotos = (numVotos / datos.total_votos) * 100;
+                        pcjVotos = Math.ceil((numVotos / datos.total_votos) * 100);
+                        if (pcjVotos > 100) pcjVotos = 100;
                     }
                 }
-                
                 
                 let row = tablaResultados.insertRow(i);
                 let cell = row.insertCell(0);
@@ -306,7 +314,7 @@ async function ObtieneEncuesta()
 
 function CreaUsuarios(numUsuarios)
 {
-    console.log(numUsuarios);
+    // console.log(numUsuarios);
     let section2Usuarios = document.getElementById("usuarios");
     section2Usuarios.innerHTML = ""
     for (let i = 0; i < numUsuarios; i++)
