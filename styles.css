@@ -6,8 +6,14 @@
 
 body{
     background-color: rgba(30, 143, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.grid{
+    display: grid;
+}
 
 .flex-row{
     display: flex;
@@ -19,10 +25,13 @@ body{
 }
 
 main{
-    width: 100%;
+    overflow: auto;
+    width: 50%;
     height: 100%;
     align-items: center;
     justify-content: center;
+    background-color: antiquewhite;
+    padding: 20px;
 }
 
 .encuesta-container{
@@ -32,6 +41,7 @@ main{
     width: fit-content;
     height: fit-content;
     background-color: white;
+    width: 100%;
 }
 
 .encuesta-tabla{
@@ -153,5 +163,5 @@ main{
 
 
 #usuarios{
-    justify-content: space-around;
+    grid-template-columns: 50% 50%;
 }
