@@ -1,16 +1,13 @@
 /* GENERAL */
 *{
-    /* margin: 0;
-    padding: 0; */
     box-sizing: border-box;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, calc(100%/3 - 20px));
-    column-gap: 20px;
+body{
+    background-color: rgba(30, 143, 255, 0.2);
 }
+
 
 .flex-row{
     display: flex;
@@ -21,14 +18,45 @@
     flex-direction: column;
 }
 
-.encuesta-container{
-    border: 1px solid black;
-    padding: 20px;
-    /* align-self: self-start; */
+main{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
-/* CREAR PREGUNTA */
+.encuesta-container{
+    border: 2px solid dodgerblue;
+    padding: 20px;
+    border-radius: 10px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+}
 
+.encuesta-tabla{
+    width: 100%;
+}
+
+.encuesta-opcion, .encuesta-pregunta{
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.encuesta2-pregunta, .encuesta3-pregunta{
+    border: 2px solid dodgerblue;
+    margin-top: 0;
+    text-align: center;
+}
+
+#num-usuarios{
+    width: 150px;
+}
+
+/* -------- ENCUESTA 1 -------- */
 .input-container{
     position: relative;
 }
@@ -49,46 +77,19 @@
     font-size: 0.7em;
 }
 
-.encuesta-input{
-    width: 100%;
-    margin-bottom: 15px;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid black;
-}
-
 .encuesta-input:focus{
     outline: none;
-    border: 2px solid dodgerblue;
+    border: 1px solid dodgerblue;
 }
 
 
-/* CEAR OPCIONES */
+/* -------- ENCUESTA 2 -------- */
 
-.encuesta-opciones{
-    max-width: 100%;
-}
-
-
-
-/* VOTAR PREGUNTA */
-#votar-pregunta{
+.encuesta2-opcion{
     text-align: center;
-    padding: 15px;
     border: 2px solid dodgerblue;
-    border-radius: 50px;
-}
-
-/* VOTAR OPCIONES */
-.votar-opciones{
-    width: 100%;
-}
-.votar-opcion{
-    text-align: center;
-    padding: 15px;
-    border: 2px solid dodgerblue;
-    border-radius: 5px;
     margin: 0;
+    margin-bottom: 15px;
 }
 
 .votada{
@@ -96,12 +97,25 @@
     color: white;
 }
 
-/* OTROS */
 
-.pointer{
-    cursor: pointer;
+/* -------- ENCUESTA 3 -------- */
+.encuesta3-opcion{
+    padding: 0;
 }
 
+.recuento-porcentaje{
+    background-color: rgba(30, 143, 255, 0.5);
+    height: 100%;
+    justify-content: space-between;
+}
+
+.recuento-porcentaje p{
+    margin: 0;
+    padding: 15px;
+}
+
+
+/* BOTONES */
 .input-actions{
     justify-content: center;
 }
@@ -124,4 +138,20 @@
 .input-action:hover{
     background-color: dodgerblue;
     color: white;
+}
+
+
+/* OTROS */
+
+.pointer{
+    cursor: pointer;
+}
+
+[id*="error"]{
+    text-align: center;
+}
+
+
+#usuarios{
+    justify-content: space-around;
 }

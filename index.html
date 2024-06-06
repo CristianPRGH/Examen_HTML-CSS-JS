@@ -12,73 +12,89 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- <header>
-        <img src="" id="">
-    </header> -->
+    <main class="flex-column">
 
-    <main class="grid">
-        <!-- SECCIÓN DE AÑADIR PREGUNTA Y OPCIONES -->
-        <section class="encuesta-container flex-column">
-                <p id="id_encuesta" style="display: none;"></p>
-                <table id="tabla-opciones">
-                    <tr>
-                        <td>
-                            <div class="input-container">
-                                <p class="input-titulo">Pregunta</p>
-                                <input type="text" id="input-pregunta" class="encuesta-input" placeholder="Escribe tu pregunta">
-                            </div>
-                        </td>
-                    </tr>
+        <p>Cuantos usuarios contestaran la encuesta?</p>
+        <input type="number" id="num-usuarios" class="encuesta-opcion">
+        
+    <!-- SECCIÓN DE AÑADIR PREGUNTA Y OPCIONES -->
+        <section id="section1" class="encuesta-container flex-column">
+            <p id="id_encuesta" style="display: none;"></p>
 
-                    <tr>
-                        <td>
-                            <div class="input-container">
-                                <p id="opcion-1" style="display: none;"></p>
-                                <p class="input-titulo">Opción 1</p>
-                                <input type="text" class="encuesta-input input-opcion" id="input-opcion1" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-1">
-                                <p id="letras-opcion-1" class="letras-opcion">0 / 25</p>
-                            </div>
-                        </td>
-                    </tr>
+            <div class="input-container">
+                <p class="input-titulo">Pregunta</p>
+                <input type="text" id="encuesta1-pregunta" class="encuesta-pregunta" placeholder="Escribe tu pregunta">
+            </div>
 
-                    <tr>
-                        <td>
-                            <div class="input-container">
-                                <p id="opcion-2" style="display: none;"></p>
-                                <p class="input-titulo">Opción 2</p>
-                                <input type="text" class="encuesta-input input-opcion" id="input-opcion2" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-2">
-                                <p id="letras-opcion-2" class="letras-opcion">0 / 25</p>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </table>
+            <table id="tabla-encuesta_1" class="encuesta-tabla">
+                <tr>    <!-- OPCION 1 -->
+                    <td>
+                        <div class="input-container">
+                            <p id="opcion-1" style="display: none;"></p>
+                            <p class="input-titulo">Opción 1</p>
+                            <input type="text" class="encuesta-opcion input-opcion" id="input-opcion1" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-1">
+                            <p id="letras-opcion-1" class="letras-opcion">0 / 25</p>
+                        </div>
+                    </td>
+                </tr>
 
-                <span class="input-actions flex-row">
-                    <p id="input-add-option" class="input-action pointer material-icons">add</p>
-                    <p id="input-enviar" class="input-action pointer material-icons">send</p>
-                </span>
+                <tr>    <!-- OPCION 2 -->
+                    <td>
+                        <div class="input-container">
+                            <p id="opcion-2" style="display: none;"></p>
+                            <p class="input-titulo">Opción 2</p>
+                            <input type="text" class="encuesta-opcion input-opcion" id="input-opcion2" maxlength="25" onkeyup="CuentaLetras(this)" data-letras="letras-opcion-2">
+                            <p id="letras-opcion-2" class="letras-opcion">0 / 25</p>
+                        </div>
+                    </td>
+                </tr>
+                
+            </table>
 
-                <p id="crea-encuesta-error" style="text-align: center;"></p>
+            <div class="input-actions flex-row">
+                <p id="input-add-option" class="input-action pointer material-icons">add</p>
+                <p id="input-enviar" class="input-action pointer material-icons">send</p>
+            </div>
+
+            <p id="crea-encuesta-error"></p>
         </section>
 
-        <!-- SECCIÓN PARA CONTESTAR LA ENCUESTA -->
-        <section class="encuesta-container flex-column">
-            <p id="votar-pregunta"></p>
 
-            <table class="votar-opciones" id="votar-opciones"></table>
+
+        <!-- FUNCIONAMIENTO POR DEFECTO, VOLVER AQUI SI LO DE LOS USUARIOS NO FUNCIONA -->
+    <!-- SECCIÓN PARA CONTESTAR LA ENCUESTA -->
+        <!-- <section id="section2" class="encuesta-container flex-column">
+            <p id="encuesta2-pregunta" class="encuesta-pregunta encuesta2-pregunta"></p>
+
+            <table id="tabla-encuesta_2" class="encuesta-tabla"></table>
 
             <span class="input-actions flex-row">
                 <p id="input-votar" class="input-action pointer material-icons" onclick="VotarEncuesta()">how_to_vote</p>
             </span>
 
             <p id="vota-encuesta-error"></p>
+        </section> -->
+
+        <section id="section2-alter" class="encuesta-container flex-column">
+            <p id="encuesta2-pregunta" class="encuesta-pregunta encuesta2-pregunta"></p>
+
+            <div id="usuarios" class="flex-row">
+
+            </div>
+            <div class="input-actions flex-row">
+                <p class="input-action pointer material-icons" onclick="VotarEncuesta()">how_to_vote</p>
+            </div>
+            <p id="vota-encuesta-error"></p>
         </section>
 
-        <section class="encuesta-container flex-column">
-            <p id="recuento-pregunta"></p>
 
-            <table class="recuento-opciones" id="recuento-opciones"></table>
+
+
+    <!-- SECCIÓN PARA LOS RESULTADOS DE LA ENCUESTA -->
+        <section id="section3" class="encuesta-container flex-column">
+            <p id="encuesta3-pregunta" class="encuesta-pregunta encuesta3-pregunta"></p>
+
+            <table id="tabla-encuesta-3" class="encuesta-tabla"></table>
         </section>
     </main>
 </body>

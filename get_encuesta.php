@@ -10,7 +10,7 @@
     {
         $id = $_GET["idencuesta"];
 
-        $query = "SELECT * FROM encuestas WHERE encuestaid = ?";
+        $query = "SELECT *, (votos1+votos2+votos3+votos4) AS total_votos FROM encuestas WHERE encuestaid = ?";
         $stmt = $connection->prepare($query);
 
         if ($stmt)
@@ -36,6 +36,8 @@
             }
         }
     }
+
+    $connection->close();
 
     $resultado = [
         "datos"=>$data,
